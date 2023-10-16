@@ -29,6 +29,7 @@ def clean_response_headers(request: web.Request) -> CIMultiDictProxy:
     except KeyError:
         pass
     else:
+        clean_headers.popall(auth_header[0], None)
         clean_headers.add(*auth_header)
     return CIMultiDictProxy(clean_headers)
 
